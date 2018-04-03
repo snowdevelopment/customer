@@ -11,7 +11,7 @@ public class PostServiceMockImpl implements PostService {
 	 * This service will be realized as a (mirco)service using REST. 
 	 * */
 	@Override
-	public PostServiceStatus sendInsuranceAgreementToCustomer(Long insuranceAgreeentId, String correlationId) {
+	public PostServiceStatus sendInsuranceAgreementToCustomer(Long insuranceAgreementId, String correlationId) {
 		return new PostServiceStatus("OK");
 	}
 

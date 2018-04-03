@@ -47,15 +47,15 @@ public class CustomerController {
 	    	String correlationId = UUID.randomUUID().toString();
 	    	
 	    	Long customerPk = customerService.insertCustomer(fnr, correlationId);
-	    	Long insuranceAgreeentId = insuranceAgreementService.insertInsuranceAgreement(customerPk, correlationId);
+	    	Long insuranceAgreementId = insuranceAgreementService.insertInsuranceAgreement(customerPk, correlationId);
 	    	
-	    	PostServiceStatus postServiceStatus = postService.sendInsuranceAgreementToCustomer(insuranceAgreeentId, correlationId);
+	    	PostServiceStatus postServiceStatus = postService.sendInsuranceAgreementToCustomer(insuranceAgreementId, correlationId);
 	    	if (postServiceStatus.getStatus().equals("OK")) {
-	    		insuranceAgreeentId = insuranceAgreementService.updateStatusOnInsuranceAgreement(insuranceAgreeentId, "AGREEMENT_SENT");	
+	    		insuranceAgreementId = insuranceAgreementService.updateStatusOnInsuranceAgreement(insuranceAgreementId, "AGREEMENT_SENT");	
 	    	} else {
 	    		// TODO: Handle error situation.
 	    	}
-	    	return new StatusDto(insuranceAgreeentId, "OK");
+	    	return new StatusDto(insuranceAgreementId, "OK");
     	} catch (Exception e) {
     		// TODO: Handle error situation.
     		return new StatusDto(-1L, "ERROR");
