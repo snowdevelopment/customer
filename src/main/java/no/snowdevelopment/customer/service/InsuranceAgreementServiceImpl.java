@@ -18,17 +18,8 @@ public class InsuranceAgreementServiceImpl implements InsuranceAgreementService 
 	private InsuranceAgreementRepository insuranceAgreementRepository;
 	
 	@Override
-	public Long insertInsuranceAgreement(Long customerPk, String correlationId) {
-		InsuranceAgreementEntity entity = new InsuranceAgreementEntity();
-		entity.setCorrelationId(correlationId);
-		entity.setStatus("CREATED"); // TODO: Consider using enum here.
-		entity.setCustomerFk(customerPk);
-		return insuranceAgreementRepository.save(entity).getId();
-	}
-
-	@Override
-	public Long updateStatusOnInsuranceAgreement(Long insuranceAgreementPk, String status) {
-		Optional<InsuranceAgreementEntity> entity = insuranceAgreementRepository.findById(insuranceAgreementPk);
+	public Long updateStatusOnInsuranceAgreement(Long insuranceAgreementId, String status) {
+		Optional<InsuranceAgreementEntity> entity = insuranceAgreementRepository.findById(insuranceAgreementId);
 		if (entity.isPresent()) {
 			entity.get().setStatus(status);
 			return insuranceAgreementRepository.save(entity.get()).getId();

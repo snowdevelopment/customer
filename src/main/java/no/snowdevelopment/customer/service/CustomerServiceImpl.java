@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import no.snowdevelopment.customer.database.entity.CustomerEntity;
+import no.snowdevelopment.customer.database.entity.InsuranceAgreementEntity;
 import no.snowdevelopment.customer.database.repository.CustomerRepository;
 
 /**
@@ -16,11 +17,18 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public Long insertCustomer(String fnr, String correlationId) {
-        CustomerEntity entity = new CustomerEntity();
-        entity.setFoedselsnummer(fnr);
-        entity.setCorrelationId(correlationId);
-        entity.setStatus("CREATED"); // TODO: consider using enum.
-        
-    	return customerRepository.save(entity).getId();
+		InsuranceAgreementEntity iaEntity = new InsuranceAgreementEntity();
+		iaEntity.setCorrelationId(correlationId);
+		iaEntity.setStatus("CREATED");
+		
+        CustomerEntity cEntity = new CustomerEntity();
+        cEntity.setFoedselsnummer(fnr);
+        cEntity.setCorrelationId(correlationId);
+        cEntity.setStatus("CREATED"); // TODO: consider using enum.
+        cEntity.addInsuranceAgreements(iaEntity);
+
+        iaEntity.setCustomer(cEntity);
+        customerRepository.save(cEntity);
+    	return cEntity.getId();
 	}
 }
