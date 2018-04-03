@@ -18,6 +18,9 @@
 
 ## Architecture (simple overview)
 * Customer.java: is the main class of this app that runs spring-boot.
-* CustomerController.java: acts as a REST endpoint receiver. It uses the CustomerService to execute business logic.
-* CustomerService.java(Impl): Executes business logic. Current version uses database to create and update CustomerEntity.java and InsuranceAgreementEntity.java. Most likely, the two former entities would be realized as separate (Micro)services.
+* CustomerController.java: acts as a REST endpoint receiver. It uses various service-classes to execute business logic.
+* CustomerService.java(Impl): Executes business logic for Customer. Current version uses database to create Customer. 
+* InsuranceAgreementService.java(Impl): Executes business logic for InsuranceAgreement. Current version uses database to create and update InsuranceAgreement.
 * CustomerRepository.java and InsuranceAgreementRepository.java: responsible for CRUD-operations on DB.
+* PostService: Just a mock for now returning OK.
+* Most likely, the two former services/entities would be realized as separate (Micro)services.

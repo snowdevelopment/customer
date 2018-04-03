@@ -1,5 +1,8 @@
 package no.snowdevelopment.customer.dto;
 
+/**
+ * @author Henrik Solberg
+ * */
 public class StatusDto {
 	public StatusDto(Long agreementId) {
 		super();
