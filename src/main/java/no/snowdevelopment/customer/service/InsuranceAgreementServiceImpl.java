@@ -5,8 +5,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import no.snowdevelopment.customer.database.InsuranceAgreementEntity;
-import no.snowdevelopment.customer.repository.InsuranceAgreementRepository;
+import no.snowdevelopment.customer.database.entity.InsuranceAgreementEntity;
+import no.snowdevelopment.customer.database.repository.InsuranceAgreementRepository;
 
 /**
  * @author Henrik Solberg

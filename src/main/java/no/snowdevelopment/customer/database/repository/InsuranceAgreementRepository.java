@@ -1,9 +1,9 @@
-package no.snowdevelopment.customer.repository;
+package no.snowdevelopment.customer.database.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import no.snowdevelopment.customer.database.InsuranceAgreementEntity;
+import no.snowdevelopment.customer.database.entity.InsuranceAgreementEntity;
 
 /**
  * @author Henrik Solberg

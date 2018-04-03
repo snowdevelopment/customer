@@ -1,4 +1,4 @@
-package no.snowdevelopment.customer.database;
+package no.snowdevelopment.customer.database.entity;
 
 import java.io.Serializable;
 
@@ -24,6 +24,7 @@ public class InsuranceAgreementEntity implements Serializable {
     @Column(name = "STATUS")
     private String status;
 
+    // TODO: realize @ManyToOne and @JoinColumn
     @Column(name = "FK_CUSTOMER")
     private Long customerFk;
     

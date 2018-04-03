@@ -1,4 +1,4 @@
-package no.snowdevelopment.customer.database;
+package no.snowdevelopment.customer.database.entity;
 
 import java.io.Serializable;
 

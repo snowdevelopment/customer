@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import no.snowdevelopment.customer.dto.StatusDto;
 import no.snowdevelopment.customer.service.CustomerService;
 import no.snowdevelopment.customer.service.InsuranceAgreementService;
 
@@ -27,7 +28,7 @@ public class CustomerController {
 
     @RequestMapping(value = "/customer/insert/{fnr}", method = RequestMethod.POST)
     @Transactional
-    public String insertCustomer(@PathVariable(value="fnr") String fnr) {
+    public StatusDto insertCustomer(@PathVariable(value="fnr") String fnr) {
     	String correlationId = UUID.randomUUID().toString();
     	
     	Long customerPk = customerService.insertCustomer(fnr, correlationId);
@@ -36,7 +37,6 @@ public class CustomerController {
     	// TODO: Send agreement to customer
     	
     	insuranceAgreeentId = insuranceAgreementService.updateStatusOnInsuranceAgreement(insuranceAgreeentId, "AGREEMENT_SENT");
-    	
-    	return insuranceAgreeentId.toString();
+    	return new StatusDto(insuranceAgreeentId);
     }
 }

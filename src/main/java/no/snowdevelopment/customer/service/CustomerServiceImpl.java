@@ -3,8 +3,8 @@ package no.snowdevelopment.customer.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import no.snowdevelopment.customer.database.CustomerEntity;
-import no.snowdevelopment.customer.repository.CustomerRepository;
+import no.snowdevelopment.customer.database.entity.CustomerEntity;
+import no.snowdevelopment.customer.database.repository.CustomerRepository;
 
 /**
  * @author Henrik Solberg
