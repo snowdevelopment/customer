@@ -46,9 +46,8 @@ public class CustomerController {
     	try {
 	    	String correlationId = UUID.randomUUID().toString();
 	    	
-	    	Long customerPk = customerService.insertCustomer(fnr, correlationId);
-	    	Long insuranceAgreementId = insuranceAgreementService.insertInsuranceAgreement(customerPk, correlationId);
-	    	
+	    	Long insuranceAgreementId = customerService.insertCustomer(fnr, correlationId);
+
 	    	PostServiceStatus postServiceStatus = postService.sendInsuranceAgreementToCustomer(insuranceAgreementId, correlationId);
 	    	if (postServiceStatus.getStatus().equals("OK")) {
 	    		insuranceAgreementId = insuranceAgreementService.updateStatusOnInsuranceAgreement(insuranceAgreementId, "AGREEMENT_SENT");	

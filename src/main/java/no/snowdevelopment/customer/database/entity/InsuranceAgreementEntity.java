@@ -4,8 +4,11 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,7 +18,7 @@ public class InsuranceAgreementEntity implements Serializable {
 
     @Id
     @GeneratedValue
-    @Column(name = "PK_INSURANCE_AGREEMENT")
+    @Column(name = "INSURANCE_AGREEMENT_ID")
     private Long id;
 
     @Column(name = "CORRELATION_ID")
@@ -23,10 +26,10 @@ public class InsuranceAgreementEntity implements Serializable {
    
     @Column(name = "STATUS")
     private String status;
-
-    // TODO: realize @ManyToOne and @JoinColumn
-    @Column(name = "FK_CUSTOMER")
-    private Long customerFk;
+    
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="CUSTOMER_ID")
+    private CustomerEntity customer;
     
 	public Long getId() {
 		return id;
@@ -52,11 +55,11 @@ public class InsuranceAgreementEntity implements Serializable {
 		this.status = status;
 	}
 
-	public Long getCustomerFk() {
-		return customerFk;
+	public CustomerEntity getCustomer() {
+		return customer;
 	}
 
-	public void setCustomerFk(Long customerFk) {
-		this.customerFk = customerFk;
-	}    
+	public void setCustomer(CustomerEntity customer) {
+		this.customer = customer;
+	}
 }
