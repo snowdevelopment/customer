@@ -29,6 +29,6 @@ public class CustomerServiceImpl implements CustomerService {
 
         iaEntity.setCustomer(cEntity);
         customerRepository.save(cEntity);
-    	return cEntity.getId();
+    	return iaEntity.getId();
 	}
 }
