@@ -23,4 +23,4 @@
 * InsuranceAgreementService.java(Impl): Executes business logic for InsuranceAgreement. Current version uses database to create and update InsuranceAgreement.
 * CustomerRepository.java and InsuranceAgreementRepository.java: responsible for CRUD-operations on DB.
 * PostService: Just a mock for now returning OK.
-* Most likely, the two former services/entities would be realized as separate (Micro)services.
+* Most likely, the CustomerService and InsuranceAgreementService would be realized as separate (Micro)services.
