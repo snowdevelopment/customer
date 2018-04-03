@@ -49,16 +49,16 @@ public class CustomerController {
 	    	Long customerPk = customerService.insertCustomer(fnr, correlationId);
 	    	Long insuranceAgreeentId = insuranceAgreementService.insertInsuranceAgreement(customerPk, correlationId);
 	    	
-	    	PostServiceStatus postServiceStatus = postService.sendInsuranceAgreementToCustomer(insuranceAgreeentId);
+	    	PostServiceStatus postServiceStatus = postService.sendInsuranceAgreementToCustomer(insuranceAgreeentId, correlationId);
 	    	if (postServiceStatus.getStatus().equals("OK")) {
 	    		insuranceAgreeentId = insuranceAgreementService.updateStatusOnInsuranceAgreement(insuranceAgreeentId, "AGREEMENT_SENT");	
 	    	} else {
 	    		// TODO: Handle error situation.
 	    	}
-	    	return new StatusDto(insuranceAgreeentId);
+	    	return new StatusDto(insuranceAgreeentId, "OK");
     	} catch (Exception e) {
     		// TODO: Handle error situation.
-    		return new StatusDto(-1L);
+    		return new StatusDto(-1L, "ERROR");
     	}
     }
 }

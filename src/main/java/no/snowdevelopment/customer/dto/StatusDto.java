@@ -4,12 +4,16 @@ package no.snowdevelopment.customer.dto;
  * @author Henrik Solberg
  * */
 public class StatusDto {
-	public StatusDto(Long agreementId) {
-		super();
+	
+	private Long agreementId;
+	private String status;
+	
+	public StatusDto(Long agreementId, String status) {
 		this.agreementId = agreementId;
+		this.status = status;
 	}
 
-	Long agreementId;
+	
 
 	public Long getAgreementId() {
 		return agreementId;
@@ -17,5 +21,17 @@ public class StatusDto {
 
 	public void setAgreementId(Long agreementId) {
 		this.agreementId = agreementId;
+	}
+
+
+
+	public String getStatus() {
+		return status;
+	}
+
+
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 }
