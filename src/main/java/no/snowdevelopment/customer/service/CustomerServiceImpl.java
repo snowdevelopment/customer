@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import no.snowdevelopment.customer.database.CustomerEntity;
-import no.snowdevelopment.customer.dto.StatusDto;
 import no.snowdevelopment.customer.repository.CustomerRepository;
 
 /**
@@ -16,12 +15,12 @@ public class CustomerServiceImpl implements CustomerService {
     CustomerRepository customerRepository;
 
 	@Override
-	public StatusDto insertCustomer(String fnr) {
+	public Long insertCustomer(String fnr, String correlationId) {
         CustomerEntity entity = new CustomerEntity();
         entity.setFoedselsnummer(fnr);
+        entity.setCorrelationId(correlationId);
+        entity.setStatus("CREATED"); // TODO: consider using enum.
         
-    	customerRepository.save(entity);
-		
-    	return new StatusDto();
+    	return customerRepository.save(entity).getId();
 	}
 }

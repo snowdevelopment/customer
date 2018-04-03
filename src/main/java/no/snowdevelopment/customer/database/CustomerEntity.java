@@ -18,12 +18,19 @@ public class CustomerEntity implements Serializable {
 
     @Id
     @GeneratedValue
-    @Column(name = "SEKV_CUSTOMER")
+    @Column(name = "PK_CUSTOMER")
     private Long id;
 
     @Column(name = "FOEDSELSNUMMER")
     private String foedselsnummer;
 
+    @Column(name = "CORRELATION_ID")
+    private String correlationId;
+    
+    @Column(name = "STATUS")
+    private String status;
+    
+    
 	public Long getId() {
 		return id;
 	}
@@ -38,5 +45,21 @@ public class CustomerEntity implements Serializable {
 
 	public void setFoedselsnummer(String foedselsnummer) {
 		this.foedselsnummer = foedselsnummer;
+	}
+
+	public String getCorrelationId() {
+		return correlationId;
+	}
+
+	public void setCorrelationId(String correlationId) {
+		this.correlationId = correlationId;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 }
